@@ -1,37 +1,37 @@
-# YouTube Disliked
+# youtube disliked
 
-Browser extension. Lists the videos you disliked on YouTube.
+browser extension. lists the videos you disliked on youtube.
 
-Manifest V3 · TypeScript · esbuild · zero runtime deps.
-Works in any Chromium-based browser (Chrome, Edge, Brave, Opera, Vivaldi, Arc).
+manifest v3 · typescript · esbuild · zero runtime deps.
+works in any chromium-based browser (chrome, edge, brave, opera, vivaldi, arc).
 
-## Build
+## build
 
 ```bash
 npm install
 npm run build
 ```
 
-Output: `dist/youtube-disliked/`.
+output: `dist/youtube-disliked/`.
 
-## Setup
+## setup
 
-1. Create an OAuth 2.0 Client ID (type **Chrome Extension**, scope `youtube.readonly`) in [Google Cloud Console](https://console.cloud.google.com/).
-2. Paste it into `manifest.json` → `oauth2.client_id`.
+1. create an oauth 2.0 client id (type **chrome extension**, scope `youtube.readonly`) in [google cloud console](https://console.cloud.google.com/).
+2. paste it into `manifest.json` → `oauth2.client_id`.
 
-## Install
+## install
 
-Open your browser's extensions page → enable Developer mode → **Load unpacked** → select `dist/youtube-disliked`.
+open your browser's extensions page → enable developer mode → **load unpacked** → select `dist/youtube-disliked`.
 
-| Browser | Extensions URL              |
+| browser | extensions url              |
 | ------- | --------------------------- |
-| Chrome  | `chrome://extensions`       |
-| Edge    | `edge://extensions`         |
-| Brave   | `brave://extensions`        |
-| Opera   | `opera://extensions`        |
+| chrome  | `chrome://extensions`       |
+| edge    | `edge://extensions`         |
+| brave   | `brave://extensions`        |
+| opera   | `opera://extensions`        |
 
-Copy the extension ID, paste it into your OAuth Client's *Application ID* field, save.
+copy the extension id, paste it into your oauth client's *application id* field, save.
 
-## License
+## license
 
-MIT
+mit
