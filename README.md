@@ -1,8 +1,9 @@
 # YouTube Disliked
 
-Chrome extension. Lists the videos you disliked on YouTube.
+Browser extension. Lists the videos you disliked on YouTube.
 
 Manifest V3 · TypeScript · esbuild · zero runtime deps.
+Works in any Chromium-based browser (Chrome, Edge, Brave, Opera, Vivaldi, Arc).
 
 ## Build
 
@@ -20,7 +21,14 @@ Output: `dist/youtube-disliked/`.
 
 ## Install
 
-`chrome://extensions` → Developer mode → **Load unpacked** → select `dist/youtube-disliked`.
+Open your browser's extensions page → enable Developer mode → **Load unpacked** → select `dist/youtube-disliked`.
+
+| Browser | Extensions URL              |
+| ------- | --------------------------- |
+| Chrome  | `chrome://extensions`       |
+| Edge    | `edge://extensions`         |
+| Brave   | `brave://extensions`        |
+| Opera   | `opera://extensions`        |
 
 Copy the extension ID, paste it into your OAuth Client's *Application ID* field, save.
 
