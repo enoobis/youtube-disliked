@@ -1,0 +1,293 @@
+/* Sidebar entry — мимикрируем под нативный пункт меню YouTube */
+.ytd-sidebar-entry {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    padding: 8px 12px 8px 24px;
+    margin: 0;
+    cursor: pointer;
+    color: inherit;
+    text-decoration: none;
+    border-radius: 10px;
+    font-family: inherit;
+    font-size: 14px;
+    line-height: 20px;
+    background: transparent;
+    border: none;
+    width: calc(100% - 12px);
+    text-align: left;
+}
+.ytd-sidebar-entry:hover {
+    background: var(--yt-spec-badge-chip-background, rgba(0, 0, 0, 0.05));
+}
+@media (prefers-color-scheme: dark) {
+    .ytd-sidebar-entry:hover {
+        background: rgba(255, 255, 255, 0.1);
+    }
+}
+.ytd-sidebar-entry__icon {
+    width: 24px;
+    height: 24px;
+    flex-shrink: 0;
+    color: currentColor;
+    transform: rotate(180deg);
+}
+
+/* Floating overlay anchored to bottom-left, как в оригинале */
+.ytd-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 99999;
+    background: rgba(0, 0, 0, 0.45);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color-scheme: light dark;
+}
+.ytd-overlay__panel {
+    width: min(420px, calc(100vw - 32px));
+    max-height: min(640px, calc(100vh - 32px));
+    background: var(--yt-spec-base-background, #fff);
+    color: var(--yt-spec-text-primary, #0f0f0f);
+    border-radius: 12px;
+    box-shadow: 0 24px 48px rgba(0, 0, 0, 0.35);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    font-family: 'Roboto', 'Segoe UI', system-ui, sans-serif;
+    font-size: 13px;
+}
+@media (prefers-color-scheme: dark) {
+    .ytd-overlay__panel {
+        background: #212121;
+        color: #f1f1f1;
+    }
+}
+.ytd-overlay__close {
+    position: absolute;
+    top: 10px;
+    right: 12px;
+    background: transparent;
+    border: none;
+    color: inherit;
+    font-size: 18px;
+    cursor: pointer;
+    line-height: 1;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.ytd-overlay__close:hover {
+    background: rgba(127, 127, 127, 0.2);
+}
+
+/* Library page section */
+.ytd-library-section {
+    padding: 16px 0 24px;
+}
+.ytd-library-section__header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 0 24px 12px;
+    font-size: 16px;
+    font-weight: 500;
+    color: inherit;
+}
+.ytd-library-section__count {
+    font-weight: 400;
+    color: var(--yt-spec-text-secondary, #606060);
+    font-size: 13px;
+}
+.ytd-library-section__row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    padding: 0 24px;
+}
+.ytd-library-section__more {
+    margin: 16px 24px 0;
+}
+
+/* Shared video card styles — повторяют popup.css, чтобы overlay и Library-секция
+   выглядели одинаково и не зависели от стилей странички YouTube. */
+.ytd-overlay .ytd-list,
+.ytd-library-section .ytd-list {
+    overflow-y: auto;
+    flex: 1;
+}
+.ytd-overlay .ytd-header,
+.ytd-library-section .ytd-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 14px;
+    border-bottom: 1px solid rgba(127, 127, 127, 0.25);
+}
+.ytd-overlay .ytd-header__avatar,
+.ytd-library-section .ytd-header__avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    object-fit: cover;
+    background: rgba(127, 127, 127, 0.25);
+    flex-shrink: 0;
+}
+.ytd-overlay .ytd-header__title,
+.ytd-library-section .ytd-header__title {
+    flex: 1;
+    min-width: 0;
+    font-weight: 600;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.ytd-overlay .ytd-header__sub,
+.ytd-library-section .ytd-header__sub {
+    font-size: 11px;
+    opacity: 0.7;
+    font-weight: 400;
+}
+.ytd-overlay .ytd-header__btn,
+.ytd-library-section .ytd-header__btn {
+    border: 1px solid rgba(127, 127, 127, 0.4);
+    background: transparent;
+    color: inherit;
+    border-radius: 18px;
+    padding: 6px 12px;
+    cursor: pointer;
+    font-size: 12px;
+}
+.ytd-overlay .ytd-empty,
+.ytd-overlay .ytd-loading,
+.ytd-library-section .ytd-empty,
+.ytd-library-section .ytd-loading {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
+    text-align: center;
+    opacity: 0.8;
+    gap: 12px;
+}
+.ytd-overlay .ytd-button,
+.ytd-library-section .ytd-button {
+    background: #cc0000;
+    color: #fff;
+    border: none;
+    border-radius: 18px;
+    padding: 10px 16px;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+}
+.ytd-overlay .ytd-button--ghost,
+.ytd-library-section .ytd-button--ghost {
+    background: transparent;
+    color: inherit;
+    border: 1px solid rgba(127, 127, 127, 0.4);
+}
+.ytd-overlay .ytd-video,
+.ytd-library-section .ytd-video {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 8px;
+    cursor: pointer;
+    text-decoration: none;
+    color: inherit;
+    border-radius: 8px;
+}
+.ytd-overlay .ytd-video {
+    flex-direction: row;
+    padding: 8px 12px;
+}
+.ytd-overlay .ytd-video:hover,
+.ytd-library-section .ytd-video:hover {
+    background: rgba(127, 127, 127, 0.1);
+}
+.ytd-overlay .ytd-video__thumb,
+.ytd-library-section .ytd-video__thumb {
+    position: relative;
+    aspect-ratio: 16 / 9;
+    background: rgba(127, 127, 127, 0.2);
+    border-radius: 6px;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+.ytd-overlay .ytd-video__thumb {
+    width: 140px;
+}
+.ytd-overlay .ytd-video__thumb img,
+.ytd-library-section .ytd-video__thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.ytd-overlay .ytd-video__duration,
+.ytd-library-section .ytd-video__duration {
+    position: absolute;
+    right: 4px;
+    bottom: 4px;
+    background: rgba(0, 0, 0, 0.8);
+    color: #fff;
+    font-size: 11px;
+    padding: 1px 4px;
+    border-radius: 3px;
+}
+.ytd-overlay .ytd-video__meta,
+.ytd-library-section .ytd-video__meta {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+.ytd-overlay .ytd-video__title,
+.ytd-library-section .ytd-video__title {
+    font-weight: 500;
+    line-height: 1.3;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+.ytd-overlay .ytd-video__channel,
+.ytd-overlay .ytd-video__stats,
+.ytd-library-section .ytd-video__channel,
+.ytd-library-section .ytd-video__stats {
+    opacity: 0.7;
+    font-size: 11px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.ytd-overlay .ytd-spinner,
+.ytd-library-section .ytd-spinner {
+    width: 32px;
+    height: 32px;
+    border: 3px solid rgba(127, 127, 127, 0.3);
+    border-top-color: #cc0000;
+    border-radius: 50%;
+    animation: ytd-spin 0.9s linear infinite;
+}
+@keyframes ytd-spin {
+    to { transform: rotate(360deg); }
+}
+.ytd-overlay .ytd-load-more,
+.ytd-library-section .ytd-load-more {
+    padding: 12px;
+    display: flex;
+    justify-content: center;
+}
+
+@media (max-width: 1100px) {
+    .ytd-library-section__row { grid-template-columns: repeat(3, 1fr); }
+}
+@media (max-width: 800px) {
+    .ytd-library-section__row { grid-template-columns: repeat(2, 1fr); }
+}

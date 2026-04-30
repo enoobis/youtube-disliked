@@ -1,47 +1,102 @@
-# <img src="src/assets/icons/icon128.png" width="45" align="left"> Youtube Disliked (Google Chrome Extension) 
+# <img src="icons/icon128.png" width="45" align="left"> YouTube Disliked
 
-> Google Chrome extension - missing 'Disliked' section for Youtube
+> Chrome extension that shows the videos you disliked on YouTube via your account.
 
-Adds a new section to Youtube UI to show a list of all videos that you disliked via selected account.
+This is a **Manifest V3** rewrite of the original
+[`father-gregor/youtube-disliked-extension`](https://github.com/father-gregor/youtube-disliked-extension).
+The stack was reduced to plain TypeScript + a tiny `esbuild` build script — no
+React, no Webpack, no SCSS. Two devDependencies in total.
 
-#### Features
-- Button in Youtube sidebar to open disliked videos list
-- New section in 'Library' to show latest disliked videos
-- Dark mode (depends on Youtube's current theme)
-- Multi-language (depends on Youtube's current language)
+## Features
 
-## Install
+- Toolbar popup that lists your disliked videos.
+- Sidebar entry inside YouTube's left navigation (clones the spirit of the
+  original "Disliked videos" button) and a floating overlay panel.
+- A "Disliked videos" section on `youtube.com/feed/library`.
+- Light + dark theme via `prefers-color-scheme` (auto-follows YouTube's theme).
+- Multi-language UI through `chrome.i18n` (en, ru, de, es, fr, uk).
 
-[Download in **Chrome Web Store**](https://github.com/father-gregor/youtube-disliked-extension "Install extension from Chrome Web Store") (not yet)
+## Prerequisites
 
-## Development
+You need a Google OAuth Client ID with **YouTube Data API v3** access.
 
-Extension written in Typescript (mostly) with React for UI and Webpack for bundling. If you need example of how to use React for browser extension or example of Webpack configuration feel free to use this repo as a start.
+1. Open [Google Cloud Console](https://console.cloud.google.com/).
+2. Create a project and enable **YouTube Data API v3**.
+3. `APIs & Services` → `OAuth consent screen` → External → fill the basics.
+4. `APIs & Services` → `Credentials` → `Create credentials` → `OAuth client ID`
+   → application type **Chrome Extension**.
+5. The console will ask for your extension's ID. You'll get one after the first
+   `Load unpacked` (see below). For now you can put a placeholder, then come
+   back and update it.
+6. Copy the resulting `client_id` and paste it into `manifest.json`:
+   ```json
+   "oauth2": {
+       "client_id": "1234567890-xxxx.apps.googleusercontent.com",
+       "scopes": ["https://www.googleapis.com/auth/youtube.readonly"]
+   }
+   ```
 
-### Preparation
-Before you can build or load extension to browser you first need to create `vault.env` file in the root of repo folder and fill-in environment variables. Because extension need to make authorized requests to Youtube, you'll need to register OAuth key via [Google Console](https://console.developers.google.com/) and add it to `vault.env`.
+## Build
 
-### Install Dependencies
-
-```
-npm i
-```
-
-### Build
-
-For production:
-```
+```bash
+npm install
 npm run build
 ```
-For development with watch mode:
-```
+
+Output: `dist/youtube-disliked/`. For active development:
+
+```bash
 npm run watch
 ```
 
-### Load to Chrome
+Type-check only (no emit):
 
-1. Clone repo: `git checkout https://github.com/father-gregor/youtube-disliked-extension.git`
-2. Go to Chrome extensions page - chrome://extensions
-3. Enable Developer mode
-4. Click on "Load unpacked extension", select folder with builded extension `...repo-path/dist/youtube-disliked`
+```bash
+npm run typecheck
+```
 
+## Load into Chrome
+
+1. Go to `chrome://extensions`.
+2. Enable **Developer mode**.
+3. Click **Load unpacked** and pick `dist/youtube-disliked`.
+4. Copy the extension ID that appears, paste it into the OAuth Client ID's
+   "Application ID" field in Google Cloud Console, then `Save`.
+5. Click the extension icon → sign in with Google → enjoy.
+
+## Project layout
+
+```text
+.
+├── manifest.json          ← Manifest V3
+├── package.json
+├── tsconfig.json
+├── build.mjs              ← esbuild driver
+├── icons/                 ← 16/32/48/128 px PNGs
+├── _locales/              ← chrome.i18n messages (en, ru, de, es, fr, uk)
+└── src/
+    ├── background.ts      ← service worker (auth + YouTube API)
+    ├── content.ts         ← content script (sidebar btn, overlay, library)
+    ├── content.css
+    ├── popup.html
+    ├── popup.ts
+    ├── popup.css
+    ├── views.ts           ← shared DOM rendering helpers
+    ├── api.ts             ← YouTube Data API wrappers
+    ├── duration.ts        ← ISO 8601 parser
+    ├── format.ts          ← view count + relative dates
+    └── types.ts
+```
+
+## Notes
+
+- `chrome.identity.getAuthToken` is used for OAuth — no user secret leaves the
+  device. The token is cached by Chrome and revoked via the
+  `https://oauth2.googleapis.com/revoke` endpoint on sign-out.
+- YouTube DOM is volatile. Sidebar/Library injection uses `MutationObserver`
+  with multiple fallback selectors and gives up gracefully if YouTube changes
+  things again. The popup keeps working regardless.
+
+## License
+
+MIT — see `LICENSE`.

@@ -1,43 +1,18 @@
 {
-  "name": "youtube-disliked-extension",
-  "version": "1.0.0",
-  "description": "Adds a new section to Youtube UI to show a list of all videos that you disliked.",
-  "scripts": {
-    "zip": "npm run build && node ./tasks/archive-build",
-    "build": "cross-env NODE_ENV=production npx webpack",
-    "watch": "npx webpack --watch"
-  },
-  "keywords": [],
-  "author": "Denys Rakov <bobsixpackbob@gmail.com> (https://github.com/father-gregor)",
-  "license": "MIT",
-  "dependencies": {
-    "@material-ui/core": "^4.9.8",
-    "iso8601-duration": "^1.2.0",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1",
-    "react-icons-kit": "^1.3.1",
-    "react-loader-spinner": "^3.1.5"
-  },
-  "devDependencies": {
-    "@types/chrome": "^0.0.103",
-    "@types/react": "16.9.32",
-    "@types/react-dom": "^16.9.6",
-    "archiver": "^3.1.1",
-    "clean-webpack-plugin": "^3.0.0",
-    "copy-webpack-plugin": "^5.1.2",
-    "cross-env": "^7.0.2",
-    "css-loader": "^3.4.2",
-    "dotenv": "^8.2.0",
-    "html-webpack-plugin": "^4.0.4",
-    "mini-css-extract-plugin": "^0.9.0",
-    "node-sass": "^4.13.1",
-    "optimize-css-assets-webpack-plugin": "^5.0.3",
-    "sass-loader": "^8.0.2",
-    "style-loader": "^1.1.3",
-    "terser-webpack-plugin": "^2.3.8",
-    "ts-loader": "^6.2.2",
-    "typescript": "^3.8.3",
-    "webpack": "^4.42.1",
-    "webpack-cli": "^3.3.11"
-  }
+    "name": "youtube-disliked",
+    "version": "2.0.0",
+    "description": "Adds a 'Disliked videos' list to the YouTube UI, powered by your account.",
+    "private": true,
+    "type": "module",
+    "scripts": {
+        "build": "node build.mjs",
+        "watch": "node build.mjs --watch",
+        "typecheck": "tsc --noEmit"
+    },
+    "license": "MIT",
+    "devDependencies": {
+        "@types/chrome": "^0.0.270",
+        "esbuild": "^0.23.1",
+        "typescript": "^5.5.4"
+    }
 }

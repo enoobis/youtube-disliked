@@ -1,17 +1,21 @@
 {
-    "compileOnSave": false,
     "compilerOptions": {
-        "sourceMap": true,
-        "target": "es6",
-        "module": "ES6",
-        "moduleResolution": "node",
-        "allowJs": false,
-        "jsx": "react",
-        "experimentalDecorators": true,
-        "allowSyntheticDefaultImports": true
+        "target": "ES2022",
+        "lib": ["ES2022", "DOM", "DOM.Iterable"],
+        "module": "ESNext",
+        "moduleResolution": "Bundler",
+        "strict": true,
+        "noUnusedLocals": true,
+        "noUnusedParameters": true,
+        "noImplicitOverride": true,
+        "noFallthroughCasesInSwitch": true,
+        "esModuleInterop": true,
+        "forceConsistentCasingInFileNames": true,
+        "skipLibCheck": true,
+        "resolveJsonModule": true,
+        "isolatedModules": true,
+        "noEmit": true,
+        "types": ["chrome"]
     },
-    "exclude": [
-        "node_modules",
-        "*.js"
-    ]
+    "include": ["src/**/*.ts", "build.mjs"]
 }

@@ -1,7 +1,5 @@
-.DS_Store
-.vscode/
-dist/
 node_modules/
-*.pem
-vault.env
-src/scripts/auth.ts
+dist/
+*.log
+.DS_Store
+.env
