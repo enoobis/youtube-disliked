@@ -1,8 +1,0 @@
-Ship prebuilt dist so users don't need Node
-
-Drop dist/ from .gitignore and commit a production build (minified, no
-source maps). The result is tiny — ~16 KB of JS total — and lets anyone
-load the extension by downloading the repo zip and editing one line in
-manifest.json. No npm, no terminal.
-
-The build-from-source path stays available for contributors.
