@@ -1,0 +1,85 @@
+{
+    "extensionName": {
+        "message": "YouTube Disliked"
+    },
+    "extensionDescription": {
+        "message": "Añade una nueva sección a Youtube para mostrar una lista de todos los vídeos que te han disgustado."
+    },
+    "dislikedButtonText": {
+        "message": "Videos que no me gustan"
+    },
+    "askForAuthorizationMessage": {
+        "message": "Para recuperar la lista de tus vídeos no deseados debes iniciar sesión para autentificar tu cuenta en la extensión \"YouTube Disliked\" pulsando el botón de abajo. Después de eso aparecerá la pantalla de autenticación de Google. No utilizamos este acceso para nada más que para obtener la lista de vídeos no deseados; no procesamos, almacenamos ni enviamos tus datos personales."
+    },
+    "askForAuthorizationButton": {
+        "message": "Iniciar sesión"
+    },
+    "failedToLoadVideosMessage": {
+        "message": "Desafortunadamente tus videos no estaban cargados. Inténtalo de nuevo pulsando el botón de abajo."
+    },
+    "failedToLoadVideosButton" : {
+        "message": "Volver a cargar"
+    },
+    "loadMoreVideosButton": {
+        "message": "Carga más"
+    },
+    "infoPanel@header": {
+        "message":"Videos que no me gustan"
+    },
+    "infoPanel@videoCountTitlePart": {
+        "message": "videos"
+    },
+    "reloadRequiredError": {
+        "message": "Algo salió mal. Por favor, recarga la página para arreglar el problema."
+    },
+    "openMoreVideosButton": {
+        "message": "Ver todo"
+    },
+    "viewCount@viewsWord": {
+        "message": "visualizaciones"
+    },
+    "viewCount@countFixedPoint": {
+        "message": "",
+        "rules": {
+            "default": null,
+            "thousands": null,
+            "millions": 1,
+            "billions": 3
+        }
+    },
+    "viewCount@thousands": {
+        "message": ""
+    },
+    "viewCount@millions": {
+        "message": " M"
+    },
+    "viewCount@billions": {
+        "message": " M",
+        "fixedPointSymbol": ""
+    },
+    "noVideosErrorMessage": {
+        "message": "No se encontraron videos que no les gustaran. Podría haber sucedido por varias razones (incluyendo problemas en los servidores de YouTube), pero si está seguro de que no le gustó al menos un vídeo de YouTube, intente actualizar la autorización pulsando el botón de abajo."
+    },
+    "noVideosErrorButton": {
+        "message": "Actualizar"
+    },
+    "logoutButton": {
+        "message": "Cerrar sesión"
+    },
+    "publishDate@agoWord": {
+        "message": "Hace",
+        "position": "before"
+    },
+    "publishDate@year": {
+        "message": "[1]=año;[2+]=años"
+    },
+    "publishDate@month": {
+        "message": "[1]=mes;[2+]=meses"
+    },
+    "publishDate@week": {
+        "message": "[1]=semana;[2+]=semanas"
+    },
+    "publishDate@today": {
+        "message": "Hoy"
+    }
+}

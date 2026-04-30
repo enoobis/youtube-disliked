@@ -1,0 +1,209 @@
+:root {
+    color-scheme: light dark;
+    --bg: #ffffff;
+    --bg-muted: #f7f7f7;
+    --fg: #0f0f0f;
+    --fg-muted: #606060;
+    --border: #e5e5e5;
+    --accent: #cc0000;
+    --accent-fg: #ffffff;
+    --hover: #f2f2f2;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --bg: #0f0f0f;
+        --bg-muted: #1a1a1a;
+        --fg: #f1f1f1;
+        --fg-muted: #aaaaaa;
+        --border: #303030;
+        --accent: #ff4444;
+        --accent-fg: #ffffff;
+        --hover: #272727;
+    }
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    background: var(--bg);
+    color: var(--fg);
+    font-family: 'Roboto', 'Segoe UI', system-ui, sans-serif;
+    font-size: 13px;
+}
+
+body.ytd-popup {
+    width: 380px;
+    max-height: 600px;
+    overflow: hidden;
+}
+
+#root {
+    display: flex;
+    flex-direction: column;
+    max-height: 600px;
+}
+
+.ytd-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 14px;
+    border-bottom: 1px solid var(--border);
+    background: var(--bg-muted);
+}
+.ytd-header__avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: var(--border);
+    flex-shrink: 0;
+    object-fit: cover;
+}
+.ytd-header__title {
+    flex: 1;
+    min-width: 0;
+    font-weight: 600;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.ytd-header__sub {
+    font-size: 11px;
+    color: var(--fg-muted);
+    font-weight: 400;
+}
+.ytd-header__btn {
+    border: 1px solid var(--border);
+    background: transparent;
+    color: var(--fg);
+    border-radius: 18px;
+    padding: 6px 12px;
+    cursor: pointer;
+    font-size: 12px;
+}
+.ytd-header__btn:hover {
+    background: var(--hover);
+}
+
+.ytd-list {
+    overflow-y: auto;
+    flex: 1;
+}
+
+.ytd-empty,
+.ytd-error,
+.ytd-loading {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
+    text-align: center;
+    color: var(--fg-muted);
+    gap: 12px;
+}
+
+.ytd-button {
+    background: var(--accent);
+    color: var(--accent-fg);
+    border: none;
+    border-radius: 18px;
+    padding: 10px 16px;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+}
+.ytd-button:hover {
+    filter: brightness(1.1);
+}
+.ytd-button--ghost {
+    background: transparent;
+    color: var(--fg);
+    border: 1px solid var(--border);
+}
+.ytd-button--ghost:hover {
+    background: var(--hover);
+    filter: none;
+}
+
+.ytd-video {
+    display: flex;
+    gap: 10px;
+    padding: 8px 12px;
+    cursor: pointer;
+    text-decoration: none;
+    color: inherit;
+}
+.ytd-video:hover {
+    background: var(--hover);
+}
+.ytd-video__thumb {
+    position: relative;
+    width: 140px;
+    flex-shrink: 0;
+    aspect-ratio: 16 / 9;
+    background: var(--bg-muted);
+    border-radius: 6px;
+    overflow: hidden;
+}
+.ytd-video__thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.ytd-video__duration {
+    position: absolute;
+    right: 4px;
+    bottom: 4px;
+    background: rgba(0, 0, 0, 0.8);
+    color: #fff;
+    font-size: 11px;
+    padding: 1px 4px;
+    border-radius: 3px;
+}
+.ytd-video__meta {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+.ytd-video__title {
+    font-weight: 500;
+    line-height: 1.3;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+.ytd-video__channel,
+.ytd-video__stats {
+    color: var(--fg-muted);
+    font-size: 11px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.ytd-spinner {
+    width: 32px;
+    height: 32px;
+    border: 3px solid var(--border);
+    border-top-color: var(--accent);
+    border-radius: 50%;
+    animation: ytd-spin 0.9s linear infinite;
+}
+@keyframes ytd-spin {
+    to { transform: rotate(360deg); }
+}
+
+.ytd-load-more {
+    padding: 12px;
+    display: flex;
+    justify-content: center;
+}

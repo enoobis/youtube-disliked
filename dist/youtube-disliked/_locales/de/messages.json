@@ -1,0 +1,84 @@
+{
+    "extensionName": {
+        "message": "YouTube Disliked"
+    },
+    "extensionDescription": {
+        "message": "Fügt einen neuen Abschnitt zu Youtube hinzu, um eine Liste aller Videos anzuzeigen, die Ihnen nicht gefallen haben."
+    },
+    "dislikedButtonText": {
+        "message": "Videos, die ich nicht mag"
+    },
+    "askForAuthorizationMessage": {
+        "message": "Um die Liste Ihrer unbeliebten Videos abzurufen, müssen Sie sich anmelden, um Ihr Konto in der Erweiterung \"YouTube Disliked\" zu authentifizieren, indem Sie die Schaltfläche unten drücken. Danach wird der Google-Authentifizierungsbildschirm angezeigt. Wir verwenden diesen Zugang für nichts anderes, als die Liste Ihrer Abgelehnten Videos abzurufen - wir verarbeiten, speichern oder senden Ihre persönlichen Daten nicht."
+    },
+    "askForAuthorizationButton": {
+        "message": "Anmelden"
+    },
+    "failedToLoadVideosMessage": {
+        "message": "Leider wurden Ihre Videos nicht geladen. Versuchen Sie es erneut, indem Sie auf die Schaltfläche unten drücken."
+    },
+    "failedToLoadVideosButton" : {
+        "message": "Neu laden"
+    },
+    "loadMoreVideosButton": {
+        "message": "Mehr laden"
+    },
+    "infoPanel@header": {
+        "message":"Videos, die ich nicht mag"
+    },
+    "infoPanel@videoCountTitlePart": {
+        "message": "videos"
+    },
+    "reloadRequiredError": {
+        "message": "Etwas ging schief. Bitte laden Sie die Seite neu, um das Problem zu beheben."
+    },
+    "openMoreVideosButton": {
+        "message": "Alle"
+    },
+    "viewCount@viewsWord": {
+        "message": "Aufrufe"
+    },
+    "viewCount@countFixedPoint": {
+        "message": "",
+        "rules": {
+            "default": null,
+            "thousands": null,
+            "millions": 1,
+            "billions": 1
+        }
+    },
+    "viewCount@thousands": {
+        "message": ""
+    },
+    "viewCount@millions": {
+        "message": " Mio."
+    },
+    "viewCount@billions": {
+        "message": " Mrd."
+    },
+    "noVideosErrorMessage": {
+        "message": "Es wurden keine unbeliebten Videos gefunden. Das kann verschiedene Gründe haben (einschließlich Probleme auf YouTube-Servern), aber wenn Sie sicher sind, dass Ihnen mindestens ein Video auf YouTube nicht gefiel, dann versuchen Sie, die Autorisierung durch Drücken der Schaltfläche unten zu aktualisieren."
+    },
+    "noVideosErrorButton": {
+        "message": "Erfrischen"
+    },
+    "logoutButton": {
+        "message": "Ausloggen"
+    },
+    "publishDate@agoWord": {
+        "message": "vor",
+        "position": "before"
+    },
+    "publishDate@year": {
+        "message": "[1]=Jahr;[2+]=Jahren"
+    },
+    "publishDate@month": {
+        "message": "[1]=Monat;[2+]=Monaten"
+    },
+    "publishDate@week": {
+        "message": "[1]=Woche;[2+]=Wochen"
+    },
+    "publishDate@today": {
+        "message": "Heute"
+    }
+}
